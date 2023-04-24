@@ -1,0 +1,22 @@
+/* Content fade-outs */
+
+:host(.d-content-fade-outs) .inn::before,
+:host(.d-content-fade-outs) .inn::after {
+    position: absolute;
+    right: 0;
+    left: 0;
+    z-index: 3;
+    height: var(--container-padding);
+    pointer-events: none;
+    content: '';
+}
+
+:host(.d-content-fade-outs) .inn::before {
+    top: 0;
+    background-image: linear-gradient(to bottom, var(--shadow-color, var(--bg-color)) 30%, rgba(var(--bar-bg-color-rgb), 0) 100%);
+}
+
+:host(.d-content-fade-outs) .inn::after {
+    bottom: 0;
+    background-image: linear-gradient(to top, var(--shadow-color, var(--bg-color)) 30%, rgba(var(--bar-bg-color-rgb), 0) 100%);
+}

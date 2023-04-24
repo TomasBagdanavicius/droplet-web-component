@@ -1,0 +1,25 @@
+{
+    "name": "droplet-web-component",
+    "version": "1.0.2",
+    "description": "A CSS and JavaScript driven info browser & carousel for your website.",
+    "keywords": [
+        "droplet",
+        "css",
+        "javascript",
+        "info browser",
+        "carousel",
+        "customizable",
+        "lightweight",
+        "interactive",
+        "web-components",
+        "animation-effects",
+        "content-switching"
+    ],
+    "author": "LWIS Technologies <info@lwis.net> (https://www.lwis.net/)",
+    "homepage": "https://www.lwis.net/droplet/",
+    "license": "MIT",
+    "devDependencies": {
+        "clean-css": "latest",
+        "uglify-js": "latest"
+    }
+}

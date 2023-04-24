@@ -1,0 +1,44 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build",
+            "type": "shell",
+            "command": "node ./scripts/build.js",
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        }, {
+            "label": "Build My Theme",
+            "type": "shell",
+            "command": "node ./scripts/build-my-theme.js",
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        }, {
+            "label": "NPM Install All",
+            "type": "shell",
+            "command": "npm install",
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        }, {
+            "label": "Delete NPM Files",
+            "type": "shell",
+            "command": "./scripts/delete-npm-files.sh",
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        }
+    ]
+}

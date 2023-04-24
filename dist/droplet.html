@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Droplet</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<style type="text/css">
+
+body {
+    font: 18px/22px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+@media ( prefers-color-scheme: dark ) {
+
+    body {
+        background-color: #1c1c1c;
+        color: #eee;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<drop-let class="d-anim d-film-track" data-title="Hello!" data-variable-height="false">
+
+    <p>This is <a href="https://www.lwis.net/droplet/" target="_blank">Droplet</a> in action!</p>
+
+    <p>Droplet is a web plugin which helps you present information in small parts to allow readers explore and find their path.</p>
+
+    <p>Droplet consists of a navigation bar at the top and content area below.</p>
+
+    <p>We have built Droplet with <abbr title="Cascading Style Sheets">CSS</abbr> animations, a bunch of <abbr title="Cascading Style Sheets">CSS</abbr> variables, and such JavaScript features as progress bar, network requests, and request abortion system to make it robust and worthwhile.</p>
+
+    <p>To understand Droplet is to experience it.</p>
+
+    <p><a href="../test/material/about-droplet/new-card.html" class="d-button">So, let's get started!</a></p>
+
+</drop-let>
+
+<script type="module">
+
+    import { Droplet } from './scripts/droplet.min.js';
+
+    customElements.define('drop-let', Droplet);
+
+</script>
+
+</body>
+</html>

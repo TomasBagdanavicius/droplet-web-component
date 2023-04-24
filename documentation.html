@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Find Documentation Online</title>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="refresh" content="5;url=https://www.lwis.net/droplet/documentation">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
+<style type="text/css">
+html,body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    min-height: 100%;
+    padding: 2% 5%;
+    font: 18px/22px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+#counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    border: solid 2px #000;
+    border-radius: 50%;
+    font-size: 25px;
+    line-height: 46px;
+}
+</style>
+</head>
+<body>
+<small id="counter"></small>
+<p>You are about to be redirected to the official documentation online.</p>
+<p>If you are not redirected automatically, please follow this <a href="https://www.lwis.net/droplet/documentation">documentation online</a>.</p>
+<script>
+var counter = document.getElementById('counter');
+var secondsRemaining = 5;
+var interval = setInterval(function(){
+    secondsRemaining--;
+    counter.innerText = secondsRemaining;
+    if(!secondsRemaining) clearInterval(interval);
+}, 1000);
+counter.innerText = secondsRemaining;
+</script>
+</body>
+</html>

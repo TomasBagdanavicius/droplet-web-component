@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Simulate Timeout &ndash; Tests &ndash; Droplet</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<style type="text/css">
+
+body {
+    font: 18px/22px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+</style>
+</head>
+<body>
+
+<drop-let class="d-anim d-film-track" data-title="Hello!" data-stylesheet="../src/css/droplet.css" data-request-timeout="3000">
+
+    <p>In this test Droplet's request timeout is set to custom 3 seconds. However, the request will take more time to be resolved. In the end the request should be automatically terminated.</p>
+
+    <p><a href="material/timeout.php" class="d-button">Start test!</a></p>
+
+</drop-let>
+
+<script type="module">
+
+    import { Droplet } from '../src/scripts/droplet.js';
+
+    customElements.define('drop-let', Droplet);
+
+</script>
+
+</body>
+</html>

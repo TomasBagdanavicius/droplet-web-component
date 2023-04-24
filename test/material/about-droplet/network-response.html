@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Network</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+</head>
+<body>
+
+    <div id="content">
+
+        <p>Let's now put Droplet to more complicated tests. Since all content is loaded via network requests, imagine a situation where the network is slow to respond, or even too slow for our liking.</p>
+
+        <p>The default request timeout is set to 10 seconds (it's configurable). What do you think will happen if the response is not sent back in 10 secs? Let's find out!</p>
+
+        <p><a href="../test/material/about-droplet/history.php?sleep=11" class="d-button">Simulate very slow network</a></p>
+
+        <p>With the default breadcrumb setup you will see a new loading tab come in, which gives you a sense of things being in waiting mode. The progress bar does its best to simulate network progress. Once the 10 secs. have passed, no explicit message will be given, but the loading tab and progress bar will cancel their work in decisive manner.</p>
+
+        <p>If you wanted to cancel the request manually, you could do that by clicking on the loading tab.</p>
+
+        <p>To continue, simulate a slow network which resolves in 3 seconds.</p>
+
+        <p><a href="../test/material/about-droplet/history.php" class="d-button">Simulate slow network with resolution</a></p>
+
+    </div>
+
+</body>
+</html>

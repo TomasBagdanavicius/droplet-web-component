@@ -1,0 +1,35 @@
+.prog-msg {
+    --progress-value: 0%;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--bar-height); /* Matches bar height to mimic identical border radius, due to Safari putting the progress bar above all layers glitch. */
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    z-index: 5; /* Above the breadcrumb bar. */
+    pointer-events: none;
+}
+
+.prog-msg .val,
+.prog-msg .abort,
+.prog-msg .state {
+    display: none;
+}
+
+.prog-msg.done {
+    --progress-value: 100%;
+}
+
+.prog-msg .bar {
+    display: block;
+    width: var(--progress-value);
+    height: var(--progress-bar-height);
+    background-color: var(--progress-bar-bg-color);
+    opacity: 1;
+    transition: opacity var(--speed-half) ease-out;
+}
+
+.prog-msg[data-state='completed'] .bar {
+    opacity: 0;
+}

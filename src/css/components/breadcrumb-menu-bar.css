@@ -1,0 +1,157 @@
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.menu-bar a {
+    display: inline; /* These elements act as content size containers, which is used in JS to determine natural content dimensions, eg. width. Property "display:inline-block" should not be used. */
+    color: var(--bar-font-color);
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.brcr {
+    overflow: hidden;
+    border-radius: var(--border-radius) var(--border-radius) 0 0; /* Address Safari putting entire breadcrumb bar on top, when a loading tab is in action. */
+}
+
+.brcr::before,
+.brcr::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 1;
+    width: var(--container-padding);
+    pointer-events: none;
+    content: '';
+}
+
+.brcr::before {
+    left: 0;
+    background-image: linear-gradient(to left, rgba(var(--bar-bg-color-rgb),0), var(--bar-bg-color));
+}
+
+.brcr::after {
+    right: 0;
+    background-image: linear-gradient(to right, rgba(var(--bar-bg-color-rgb),0), var(--bar-bg-color));
+}
+
+.brcr-l,
+.brcr-l li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.brcr-l {
+    --max-scrollbar-height: 17px; /* Maximum that should be put into calculations. */
+    overflow: auto hidden; /* Enable horizontal scrolling only */
+    overscroll-behavior: contain;
+    scroll-behavior: smooth;
+    position: relative;
+    display: flex;
+    box-sizing: content-box; /* This fixes compatability issues for when scrollbar overlays the box or is outside it. */
+    max-height: calc(var(--bar-height) + var(--max-scrollbar-height));
+    margin: 0 0 calc(0px - var(--max-scrollbar-height));
+    padding-bottom: var(--max-scrollbar-height);
+}
+
+.brcr-l > li {
+    overflow: hidden;
+    position: relative;
+    flex: 0 0 auto;
+    box-sizing: content-box;
+    width: 0;
+    max-width: 100px; /* Tells JS what max width should be. */
+    margin-right: 0;
+    padding-right: 0;
+    padding-left: 0;
+    border-radius: var(--border-radius);
+    white-space: nowrap;
+    cursor: pointer;
+    line-height: var(--bar-height);
+}
+
+.brcr-l > li:not(:first-child),
+:host(:not(.d-play)) .brcr-l > li:first-child {
+    text-overflow: ellipsis;
+}
+
+.brcr-l > li:hover {
+    background-color: var(--fg-color-darker);
+}
+
+.brcr-l > li::after {
+    opacity: 0;
+    transition: opacity 0.2s var(--main-timing-function);
+    content: '';
+}
+
+.brcr-l > li.load {
+    position: relative;
+    z-index: 2; /* Above breadcrumb bar curtains. */
+    height: 0;
+    padding: var(--bar-height) 0 0;
+    background-color: var(--loaded-bg-color);
+}
+
+.brcr-l > .load::after {
+    --spinner-height: calc(var(--bar-height) / 2.5);
+    --spinner-height-half: calc(0px - (var(--spinner-height) / 2));
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 3;
+    display: block;
+    box-sizing: border-box;
+    height: var(--spinner-height);
+    width: var(--spinner-height);
+    margin: var(--spinner-height-half) 0 0 var(--spinner-height-half);
+    border: solid 2px #fff;
+    border-right-color: transparent;
+    border-radius: 50%;
+    opacity: 1;
+    animation: spin 0.8s infinite linear;
+    content: '';
+}
+
+.brcr-l > li.act:not(.load) {
+    width: var(--item-max-width);
+    margin-right: var(--container-padding-negative);
+    padding-right: var(--container-padding);
+    padding-left: var(--container-padding);
+}
+
+.brcr-l > li.act.load {
+    width: var(--bar-height);
+}
+
+.brcr-l > li.act {
+    transition-property: background-color; /* Allows breadcrumb item flashing (doesn't require animations on). */
+    transition-duration: var(--speed-half);
+    transition-timing-function: var(--main-timing-function);
+}
+
+.brcr-l li.flash {
+    background-color: var(--loaded-bg-color);
+}
+
+/* Animations */
+
+:host(.d-anim) .brcr-l > li {
+    transition-property: width, margin-right, padding-right, padding-left, background-color;
+    transition-duration: var(--speed);
+    transition-timing-function: var(--main-timing-function);
+}
+
+:host(.d-anim) .brcr-l > li.act.flash {
+    transition-duration: var(--speed), var(--speed), var(--speed), var(--speed), var(--speed-half);
+}
+
+:host(.d-anim) .brcr-l > li.act.load {
+    transition-duration: var(--speed-half);
+}

@@ -1,0 +1,16 @@
+:host,
+* {
+    box-sizing: border-box;
+}
+
+a,
+button {
+    color: inherit;
+}
+
+button {
+    padding: 0;
+    border: 0;
+    background-color: inherit;
+    font-size: inherit;
+}

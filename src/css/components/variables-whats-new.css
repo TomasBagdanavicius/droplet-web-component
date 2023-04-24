@@ -1,0 +1,51 @@
+:host {
+    /* Generic Colors */
+    --bg-color: inherit;
+    --bg-font-color: inherit;
+    --fg-color: var(--bg-color);
+    --fg-color-darker: #ddd;
+    --fg-font-color: var(--bg-font-color);
+    /* Structure */
+    --max-width: 300px;
+    --max-height: 450px;
+    --container-padding: 20px;
+    /* Corners */
+    --outer-border-style: none; /* Use "none" to disable. */
+    --outer-border-width: 0px;
+    --outer-border-color: var(--fg-color);
+    --border-radius: 0px;
+    --border-radius-inner: 0px;
+    /* Menu Bar */
+    --bar-height: 50px; /* In pixels. */
+    --bar-bg-color: var(--bg-color);
+    --bar-bg-color-rgb: 0,0,0; /* RGB color list is required to overcome Safari linear gradient transparent glitch. */
+    --bar-font-color: #222; /* This variables shouldn't be set to "inherit", because it will pass through to border color declaration. */
+    --bar-border-width: 2px; /* In pixels; append "px" with zero value. */
+    --bar-border-color: #e4e4e4;
+    /* Animations */
+    --speed: .2s;
+    --main-timing-function: ease-out;
+    /* Loader */
+    --loaded-bg-color: #ddd;
+    /* Progress Message */
+    --progress-bar-bg-color: var(--loaded-bg-color);
+    --progress-bar-height: 5px;
+    /* Flash */
+    --flash-bg-color: #fff;
+}
+
+/* Dark mode */
+@media ( prefers-color-scheme: dark ) {
+
+    :host {
+        /* Generic Colors */
+        --fg-color-darker: #2b2b2b;
+        /* Menu Bar */
+        --bar-font-color: #fff;
+        --bar-border-color: #333;
+        /* Loader */
+        --loaded-bg-color: var(--bar-border-color);
+        /* Flash */
+        --flash-bg-color: #333;
+    }
+}

@@ -1,0 +1,123 @@
+:host(.d-anim.d-play) .inn /* Using ".d-play" context in order not to animate on page load (eg. transform's translate can be adjusted on page load). */ {
+    transition-property: width, height;
+    transition-duration: var(--speed);
+    transition-timing-function: var(--main-timing-function);
+}
+
+/* Film-Track */
+
+/* Positioning */
+
+:host(.d-anim.d-film-track) .i.act:not(.on),
+:host(.d-anim.d-film-track.d-anim-left) .i.act:not(.on) {
+    top: 0;
+    left: 100%;
+}
+
+:host(.d-anim.d-film-track.d-anim-right) .i.act:not(.on) {
+    right: 100%;
+    left: auto;
+}
+
+:host(.d-anim.d-film-track.d-anim-bottom) .i.act:not(.on) {
+    top: auto;
+    bottom: 100%;
+    left: 0;
+}
+
+:host(.d-anim.d-film-track.d-anim-top) .i.act:not(.on) {
+    top: 100%;
+    left: 0;
+}
+
+/* Play */
+
+:host(.d-anim.d-film-track.d-play) .pane {
+    transition: transform var(--speed) var(--main-timing-function);
+}
+
+/* Cross-Fade & Slide-Over */
+
+/* Play */
+
+:host(.d-anim.d-cross-fade.d-play) .i,
+:host(.d-anim.d-slide-over.d-play) .i {
+    transition-duration: var(--speed);
+    transition-timing-function: var(--main-timing-function);
+}
+
+/* Opacity */
+
+:host(.d-anim.d-cross-fade) .i:not(.on) {
+    top: 0;
+    left: 0;
+}
+
+:host(.d-anim.d-cross-fade) .i,
+:host(.d-anim.d-cross-fade.d-play) .i.on {
+    opacity: 0;
+}
+
+:host(.d-anim.d-cross-fade) .i.on,
+:host(.d-anim.d-cross-fade) .i.act {
+    opacity: 1;
+}
+
+/* Play */
+
+:host(.d-anim.d-cross-fade.d-play) .i {
+    transition-property: opacity;
+}
+
+/* Slide-Over */
+
+/* Positioning */
+
+:host(.d-anim.d-slide-over) .i.act:not(.on),
+:host(.d-anim.d-slide-over.d-anim-left) .i.act:not(.on) {
+    top: 0;
+    left: 100%;
+}
+
+:host(.d-anim.d-slide-over.d-anim-right) .i.act:not(.on) {
+    right: 100%;
+    left: auto;
+}
+
+:host(.d-anim.d-slide-over.d-anim-bottom) .i.act:not(.on) {
+    top: auto;
+    bottom: 100%;
+    left: 0;
+}
+
+:host(.d-anim.d-slide-over.d-anim-top) .i.act:not(.on) {
+    top: 100%;
+    left: 0;
+}
+
+/* Play */
+
+:host(.d-anim.d-slide-over.d-play) .i {
+    transition-property: transform;
+}
+
+/* Cross-Fade & Slide-Over */
+
+:host(.d-anim.d-slide-over.d-cross-fade.d-play) .i {
+    transition-property: transform, opacity;
+}
+
+/* Flash */
+
+@keyframes flash {
+    from {
+        background-color: var(--bg-color);
+    }
+    to {
+        background-color: var(--flash-bg-color);
+    }
+}
+
+:host(.d-flash) .i.act {
+    animation: 0.1s linear 0s 1 normal flash;
+}

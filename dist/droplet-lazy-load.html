@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Lazy Load &ndash; Droplet</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<style type="text/css">
+
+body {
+    font: 18px/22px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+@media ( prefers-color-scheme: dark ) {
+
+    body {
+        background-color: #1c1c1c;
+        color: #eee;
+    }
+}
+
+/* Note (for testing purposes) */
+
+html,
+body {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    padding: 2%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+/* Droplet Placeholder & Prototype */
+
+@keyframes scaleout {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1.0);
+        opacity: 0;
+    }
+}
+
+/* Start Droplet prototype */
+.d-ptt {
+    display: none;
+}
+
+/* Start Droplet placeholder */
+.d-plh {
+    position: relative;
+    max-width: 400px;
+    min-height: 200px;
+    margin: 1em auto;
+}
+
+.d-plh drop-let {
+    margin: 0; /* Unsets default Droplet margins */
+}
+
+.d-plh {
+    border-radius: 10px;
+    background-color: gray;
+}
+
+/* Droplet loader icon */
+.d-plh::after {
+    --size: 100px;
+    --size-half: calc(var(--size) / 2);
+    --size-half-negative: calc(0px - var(--size-half));
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    width: var(--size);
+    height: var(--size);
+    margin: var(--size-half-negative) 0 0 var(--size-half-negative); /* Keep margins, because "scaleout" animation is using transform. */
+    background-color: #4269e1;
+    border-radius: 100%;
+    animation: scaleout 0.75s infinite ease-out;
+    content: '';
+}
+
+</style>
+</head>
+<body>
+
+<!-- Note (for testing purposes)-->
+
+<div class="note">
+
+    <p>Droplet hasn't been loaded or constructed yet. You can verify this via your network monitor. Scroll down to lazy load.</p>
+
+</div>
+
+<!-- Droplet Template -->
+
+<div class="d-plh">
+
+    <div class="d-ptt d-anim d-film-track" data-title="Hello!" data-variable-height="false">
+
+        <p>This is <a href="https://www.lwis.net/droplet/" target="_blank">Droplet</a> in action!</p>
+
+        <p>Droplet is a web plugin which helps you present information in small parts to allow readers explore and find their path.</p>
+
+        <p>Droplet consists of a navigation bar at the top and content area below.</p>
+
+        <p>We have built Droplet with <abbr title="Cascading Style Sheets">CSS</abbr> animations, a bunch of <abbr title="Cascading Style Sheets">CSS</abbr> variables, and such JavaScript features as progress bar, network requests, and request abortion system to make it robust and worthwhile.</p>
+
+        <p>To understand Droplet is to experience it.</p>
+
+        <p><a href="../test/material/about-droplet/new-card.html" class="d-button">So, let's get started!</a></p>
+
+    </div>
+
+</div>
+
+<script>
+
+    /* Droplet Prototypes */
+
+    // Define whether Droplet module has already been loaded.
+    let DropletModuleLoaded = false;
+
+    function constructDropletPrototype( placeholder ) {
+
+        let htmlContent = placeholder.outerHTML
+            .trim()
+            .replace(/^<div/, '<drop-let')
+            .replace('class="d-ptt ', 'class="')
+            .replace(/<\/div>$/, '</drop-let>');
+
+        placeholder.parentElement.insertAdjacentHTML('afterbegin', htmlContent);
+        placeholder.parentElement.classList.remove('plh');
+
+        const dropletElem = placeholder.parentElement.firstElementChild;
+
+        placeholder.remove();
+
+        return dropletElem;
+    }
+
+    // Select all Droplet prototype placeholders.
+    const dropletPrototypes = document.getElementsByClassName('d-plh');
+
+    if( dropletPrototypes.length ) {
+
+        // Setup the intersection observer.
+        const lazyDropletsObserver = new IntersectionObserver(( entries, opts ) => {
+
+            // For all Droplet prototypes.
+            entries.forEach( (entry) => {
+
+                // When intersecting.
+                if( entry.isIntersecting ) {
+
+                    // Convert Droplet prototype and cancel further observations.
+                    const make = () => {
+
+                        let dropletElem = constructDropletPrototype(entry.target.firstElementChild); // Mind "firstElementChild".
+                        lazyDropletsObserver.unobserve(entry.target);
+
+                        return dropletElem;
+                    }
+
+                    // Droplet module hasn't been loaded yet.
+                    if( !DropletModuleLoaded ) {
+
+                        // Load Droplet module.
+                        import('./scripts/droplet.min.js').then((module) => {
+
+                            DropletModuleLoaded = true;
+
+                            // Add 'drop-let' element to the registry.
+                            customElements.define('drop-let', module.Droplet);
+                            make();
+
+                        });
+
+                    } else {
+
+                        make();
+                    }
+                }
+            })
+
+        }, {
+            root: null, // Viewport by default.
+            threshold: .01 // Percentage of Droplet's visible area.
+        });
+
+        // Now observe all Droplet prototype placeholder elements.
+        for( let lazyDroplet of dropletPrototypes ) {
+            lazyDropletsObserver.observe(lazyDroplet);
+        }
+    }
+
+</script>
+
+</body>
+</html>

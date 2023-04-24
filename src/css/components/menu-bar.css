@@ -1,0 +1,139 @@
+:host(.d-js-init.d-with-bar) {
+    padding-top: var(--bar-border-size);
+}
+
+:host(.d-with-bar) .inn {
+    margin-top: 0;
+}
+
+/* Bar visible only with d-non-root (.d-no-bar-at-start) */
+
+:host(.d-no-bar-at-start.d-js-init) {
+    padding-top: var(--container-padding);
+}
+
+:host(.d-no-bar-at-start.d-non-root) {
+    padding-top: calc(var(--bar-border-size) + var(--container-padding));
+}
+
+:host(.d-anim.d-no-bar-at-start) {
+    transition-property: max-height, padding-top, padding-bottom;
+    transition-duration: var(--speed);
+    transition-timing-function: var(--main-timing-function);
+}
+
+:host(.d-no-bar-at-start) .menu-bar {
+    transform: translateY(-100%);
+}
+
+:host(.d-no-bar-at-start.d-non-root) .menu-bar {
+    transform: translateY(0);
+}
+
+:host(.d-no-bar-at-start.d-with-bar) .inn {
+    margin-top: var(--container-padding-negative);
+}
+
+/* End */
+
+.menu-bar,
+.menu-bar .t,
+.menu-bar button {
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+}
+
+.menu-bar {
+    left: 0;
+    right: 0;
+    z-index: 4; /* Above main content area. */
+    height: var(--bar-border-size);
+    border-bottom: solid var(--bar-border-width) var(--bar-border-color);
+    background-color: var(--bar-bg-color);
+    color: var(--bar-font-color);
+}
+
+.menu-bar .t {
+    left: var(--bar-height);
+    right: var(--bar-height);
+    bottom: 0;
+    padding: 0 var(--container-padding);
+    line-height: var(--bar-height);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+    cursor: pointer;
+}
+
+.menu-bar button {
+    width: var(--bar-height);
+    height: 0;
+    padding-top: var(--bar-height);
+    border-radius: var(--border-radius);
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.menu-bar button::before {
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    margin: -5px 0 0 -5px;
+    border: solid 2px var(--bar-font-color);
+    content: '';
+}
+
+.menu-bar button:hover {
+    background-color: var(--fg-color-darker);
+}
+
+.menu-bar .back {
+    left: 0;
+    transform: translateX(-100%);
+}
+
+.menu-bar .back::before {
+    margin-left: -3px;
+    border-top-width: 0;
+    border-right-width: 0;
+    transform: rotate(45deg);
+}
+
+.menu-bar .home {
+    right: 0;
+    transform: translateX(100%);
+}
+
+.menu-bar .home::before {
+    width: 14px;
+    height: 14px;
+    margin: -7px 0 0 -7px;
+}
+
+:host(.d-non-root) .menu-bar .back,
+:host(:not([data-level='0'],[data-level='1'])) .menu-bar .home {
+    transform: translateX(0);
+}
+
+.menu-bar button.flash {
+    background-color: var(--loaded-bg-color);
+    transition-property: background-color; /* Allows breadcrumb item flashing (doesn't require animations turned on). */
+    transition-duration: var(--speed-half);
+    transition-timing-function: var(--main-timing-function);
+}
+
+/* Animations */
+
+:host(.d-anim) .menu-bar,
+:host(.d-anim) .menu-bar button {
+    transition: transform var(--speed) var(--main-timing-function);
+}
+
+:host(.d-anim) .menu-bar button {
+    transition-property: transform, background-color;
+    transition-duration: var(--speed), var(--speed-half);
+}

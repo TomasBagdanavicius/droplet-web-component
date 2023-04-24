@@ -1,0 +1,84 @@
+:host {
+    text-align: center;
+}
+
+/* Menu Bar */
+
+.menu-bar .t {
+    font-weight: 700;
+}
+
+.menu-bar button {
+    border-radius: 50%;
+}
+
+.menu-bar button::before {
+    border-width: 3px; /* The Home button square for some reason is not correct when using 2px. */
+}
+
+/* Progress Message */
+
+.prog-msg .bar {
+    margin: 0 auto; /* Make the progress bar spring out in the middle. */
+    border-radius: calc(var(--progress-bar-height) / 2);
+}
+
+/* Content Area */
+
+.d-button {
+    border-radius: 5px;
+    background-color: #e4e4e4;
+}
+
+/* Content icons */
+
+.ic {
+    display: block;
+    overflow: hidden;
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 50%;
+    background-color: #4269e1;
+    box-shadow: inset 0 0 40px #1f49c8;
+    color: #fff;
+    text-align: center;
+}
+
+.ic::before {
+    display: inline-block;
+    padding-top: 100%;
+    vertical-align: middle;
+    content: '';
+}
+
+.ic.faster {
+    background-color: #35a7ff;
+    box-shadow: inset 0 0 40px #1699ff;
+}
+
+.ic.higher {
+    background-color: #5a9367;
+    box-shadow: inset 0 0 40px #51845c;
+}
+
+.ic.stronger {
+    background-color: #253031;
+    box-shadow: inset 0 0 40px #212b2c;
+}
+
+.ic.sale {
+    background-color: #e3170a;
+    box-shadow: inset 0 0 40px #cc1408;
+}
+
+a.ic {
+    text-decoration: none;
+}
+
+/* Dark mode */
+@media ( prefers-color-scheme: dark ) {
+
+    .d-button {
+        background-color: #333;
+    }
+}

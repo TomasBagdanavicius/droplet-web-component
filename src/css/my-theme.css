@@ -1,0 +1,26 @@
+/* This file is fully customizable. Feel free to remove optional components to optimize output stylesheet based on your needs. */
+
+/* CSS Variables (required) */
+/* Open the below file in your code editor to amend variables to your liking. */
+@import "./components/variables-my-theme.css";
+/* CSS Normalization (required) */
+@import "./components/normalize.css";
+/* Accessories (eg. fade-outs, etc.) (optional) */
+/* Comment this out, if you don't need fancy accessories. */
+@import "./components/accessories.css";
+/* Base Structure (required) */
+@import "./components/base.css";
+/* Transitions and Effects (optional) */
+/* Comment this out, if you are not going to use animations/transitions. */
+@import "./components/transitions.css";
+/* Menu Bar (optional) */
+/* Comment this out, if you don't plan to use any menu bar at all. */
+@import "./components/menu-bar.css";
+/* Breadcrumb Menu Bar (optional) */
+/* Comment this out, if you don't plan to use any menu bar at all or if you are always going to use other menu bar options. */
+@import "./components/breadcrumb-menu-bar.css";
+/* Progress Meter (required) */
+@import "./components/progress-message.css";
+/* Content Area (optional) */
+/* Basic styles for your content area (eg. paragraph styling, branded Droplet button, etc.) */
+@import "./components/content.css";

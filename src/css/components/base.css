@@ -1,0 +1,75 @@
+:host {
+    /* Calculated Variables */
+    --container-padding-negative: calc(0px - var(--container-padding));
+    --speed-half: calc(var(--speed) / 2);
+    --speed-minimum: max(0.1s, var(--speed-half));
+    --bar-border-size: calc(var(--bar-height) + var(--bar-border-width));
+    /* Other Declarations */
+    display: block;
+    overflow: auto; /* Readability and no-js optimization. */
+    position: relative;
+    max-width: var(--max-width);
+    max-height: var(--max-height);
+    margin: 1em;
+    padding: var(--container-padding); /* No-js optimization. */
+    border: var(--outer-border-style) var(--outer-border-width) var(--outer-border-color);
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    background-color: var(--bg-color);
+    color: var(--bg-font-color);
+}
+
+:host(.d-js-init) {
+    overflow: hidden;
+    background-color: var(--fg-color);
+}
+
+.inn {
+    overflow: hidden;
+    position: relative;
+    z-index: 5; /* Above breadcrumbs to enable top box shadow. */
+    margin: var(--container-padding-negative);
+    border-radius: var(--border-radius-inner) var(--border-radius-inner) 0 0;
+    background-color: var(--bg-color);
+}
+
+.pane {
+    position: relative;
+}
+
+.i {
+    overflow: auto;
+    overscroll-behavior: contain;
+    position: relative;
+    z-index: 1;
+    max-height: calc(var(--max-height) - var(--outer-border-width) * 2); /* Used for the next height in animation. */
+    padding: var(--container-padding);
+    background-color: var(--bg-color);
+}
+
+.i:not(.on,:first-child) {
+    display: none;
+}
+
+.i:not(.on) {
+    position: absolute;
+    width: 100%;
+}
+
+.i:first-child {
+    z-index: 2;
+}
+
+:host(.d-with-bar) .i, /* Constant menu bar. */
+:host(.d-with-bar.d-no-bar-at-start.d-non-root) .i { /* Inside cards. */
+    max-height: calc(var(--max-height) - var(--bar-border-size) - var(--outer-border-width) * 2);
+}
+
+:host(.d-with-bar.d-no-bar-at-start:not(.d-non-root)) .i, /* Initial card + inbound level 0 and outbound for level 0 */
+:host(.d-with-bar.d-no-bar-at-start.d-play[data-level='1']) .i:last-child /* Initial card outbound. */ {
+    max-height: calc(var(--max-height) - var(--outer-border-width) * 2);
+}
+
+.i:not(.on),
+:host(.d-play) .i {
+    pointer-events: none;
+}

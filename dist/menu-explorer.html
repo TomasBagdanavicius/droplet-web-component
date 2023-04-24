@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Menu Explorer &ndash; Droplet</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<style type="text/css">
+
+body {
+    font: 18px/22px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+@media ( prefers-color-scheme: dark ) {
+
+    body {
+        background-color: #1c1c1c;
+        color: #eee;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<drop-let class="d-anim d-film-track" data-title="Main Menu" data-stylesheet="css/menu-explorer.min.css" data-show-menu-bar="false">
+
+    <ul>
+        <li class="dir"><a href="../test/material/menu-explorer/main.html#about-us">About Us</a></li>
+        <li class="dir"><a href="../test/material/menu-explorer/main.html#services">Services</a></li>
+        <li><a href="#menu-explorer-test">Shop</a></li>
+        <li class="dir"><a href="../test/material/menu-explorer/main.html#industries">Industries</a></li>
+        <li class="dir"><a href="../test/material/menu-explorer/main.html#knowledge-hub">Knowledge Hub</a></li>
+        <li class="dir"><a href="../test/material/menu-explorer/main.html#follow-us">Follow Us</a></li>
+        <li><a href="#menu-explorer-test">Contact Us</a></li>
+        <li><a href="https://www.lwis.net/droplet/" class="d-prevent" target="_blank">Droplet Website</a></li>
+    </ul>
+
+</drop-let>
+
+<script type="module">
+
+    import { Droplet } from './scripts/droplet.min.js';
+
+    customElements.define('drop-let', Droplet);
+
+</script>
+
+</body>
+</html>

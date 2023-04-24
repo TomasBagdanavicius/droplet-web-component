@@ -1,0 +1,8 @@
+New Card
+
+This is my text content. Droplet will convert this line into a HTML paragraph.
+
+Yet another line.
+A HTML line break will be added by Droplet before this line, because there was no empty line left before it.
+
+Droplet also supports markdown link syntax: [Droplet Website](https://www.lwis.net/droplet/).

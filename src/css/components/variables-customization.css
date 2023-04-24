@@ -1,0 +1,37 @@
+:host {
+    /* Generic Colors */
+    --bg-color: #37718e;
+    --bg-font-color: #fff;
+    --fg-color: #254e70;
+    --fg-color-darker: #29577d;
+    --fg-font-color: #fff;
+    /* Structure */
+    --max-width: 300px;
+    --max-height: 450px;
+    --container-padding: 20px;
+    /* Corners */
+    --outer-border-style: none; /* Use "none" to disable. */
+    --outer-border-width: 0px;
+    --outer-border-color: var(--fg-color);
+    --border-radius: 10px;
+    --border-radius-inner: 0px;
+    /* Menu Bar */
+    --bar-height: 50px; /* In pixels. */
+    --bar-bg-color: var(--fg-color);
+    --bar-bg-color-rgb: 37,78,112; /* RGB color list is required to overcome Safari linear gradient transparent glitch. */
+    --bar-font-color: #fff;
+    --bar-border-width: 0px; /* In pixels; append "px" with zero value. */
+    --bar-border-color: #fff;
+    /* Animations */
+    --speed: .2s;
+    --main-timing-function: ease-out;
+    /* Loader */
+    --loaded-bg-color: #c33c54;
+    /* Progress Message */
+    --progress-bar-bg-color: var(--loaded-bg-color);
+    --progress-bar-height: 5px;
+    /* Flash */
+    --flash-bg-color: #fff;
+    /* Other */
+    --shadow-color: var(--fg-color);
+}

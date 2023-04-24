@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Customization &ndash; Droplet</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+<style type="text/css">
+
+body {
+    font: 18px/22px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+@media ( prefers-color-scheme: dark ) {
+
+    body {
+        background-color: #1c1c1c;
+        color: #eee;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<drop-let class="d-content-fade-outs d-anim d-film-track" data-title="Hello!" data-stylesheet="css/customization.min.css" data-show-menu-bar="navigation">
+
+    <p>This <a href="https://www.lwis.net/droplet/" target="_blank">droplet</a> is rather different from the main above, however all it took to build this was a few <abbr title="Cascading Style Sheets">CSS</abbr> variable changes and tweaked JavaScript options.</p>
+
+    <p>The overall styling was amended using such <abbr title="Cascading Style Sheets">CSS</abbr> variables as <code>--bg-color</code>, <code>--fg-color</code>, <code>--bar-height</code> and others, but the main tweak is the look and function of the menu bar at the top.</p>
+
+    <p>We are using data attribute <code>data-show-menu-bar=&quot;navigation&quot;</code> which is different from breadcrumb navigation.</p>
+
+    <p><a href="../test/material/customization/navigation-bar.html" class="d-button">Let's find out how</a></p>
+
+</drop-let>
+
+<script type="module">
+
+    import { Droplet } from './scripts/droplet.min.js';
+
+    customElements.define('drop-let', Droplet);
+
+</script>
+
+</body>
+</html>
